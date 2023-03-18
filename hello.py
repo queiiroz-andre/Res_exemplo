@@ -3,21 +3,24 @@ from flask import Flask, jsonify, request
 app = Flask(__name__)
 
 users = []
+user_id = 1
 
 @app.route('/users', methods=['POST'])
 def create_user():
+    global user_id
     user_data = request.get_json()
     name = user_data['name']
     cpf = user_data['cpf']
     phone = user_data['phone']
 
     user = {
+        'id': user_id,
         'name': name,
         'cpf': cpf,
         'phone': phone
     }
-
     users.append(user)
+    user_id += 1
 
     return jsonify(user), 201
 
