@@ -33,8 +33,8 @@ def delete_user(user_id):
     for user in users:
         if user['id'] == user_id:
             users.remove(user)
-            return jsonify({'message': 'User deleted'})
-    return jsonify({'message': 'User not found'})
+            return jsonify({'message': 'Usuário deletado!'})
+    return jsonify({'message': 'Usuário não encontrado!'})
 
 if __name__ == '__main__':
     app.run(debug=True)
