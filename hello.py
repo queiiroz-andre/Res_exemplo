@@ -28,10 +28,10 @@ def create_user():
 def get_users():
     return jsonify(users)
 
-@app.route('/users/<string:cpf>', methods=['DELETE'])
-def delete_user(cpf):
+@app.route('/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
     for user in users:
-        if user['cpf'] == cpf:
+        if user['id'] == user_id:
             users.remove(user)
             return jsonify({'message': 'User deleted'})
     return jsonify({'message': 'User not found'})
